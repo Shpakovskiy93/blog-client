@@ -14,7 +14,7 @@ export const Login = () => {
   const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, setError, formState: {errors, isValid} } = useForm({
+  const { register, handleSubmit, formState: {errors, isValid} } = useForm({
     defaultValues: {
       email: '',
       password: ''
@@ -61,7 +61,7 @@ export const Login = () => {
           {...register('password', {required: 'enter your password'})}
           fullWidth 
         />
-        <Button type='submit' size="large" variant="contained" fullWidth>
+        <Button disabled={!isValid} type='submit' size="large" variant="contained" fullWidth>
           Войти
         </Button>
       </form>
